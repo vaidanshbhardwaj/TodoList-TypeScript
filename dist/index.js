@@ -1,24 +1,24 @@
 "use strict";
-var btn = document.getElementById("btn");
-var input = document.getElementById("todoinput");
-var form = document.querySelector("form");
-var list = document.getElementById("todolist");
-var todos = readTodos();
+const btn = document.getElementById("btn");
+const input = document.getElementById("todoinput");
+const form = document.querySelector("form");
+const list = document.getElementById("todolist");
+const todos = readTodos();
 todos.forEach(createTodo);
 function saveTodos() {
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 function readTodos() {
-    var todosJSON = localStorage.getItem("todos");
+    const todosJSON = localStorage.getItem("todos");
     if (todosJSON === null)
         return [];
     return JSON.parse(todosJSON);
 }
 function handleSubmit(e) {
     e.preventDefault();
-    var newTodo = {
+    const newTodo = {
         text: input.value,
-        completed: false
+        completed: false,
     };
     createTodo(newTodo);
     todos.push(newTodo);
@@ -26,8 +26,8 @@ function handleSubmit(e) {
     input.value = "";
 }
 function createTodo(todo) {
-    var newLI = document.createElement("li");
-    var checkbox = document.createElement("input");
+    const newLI = document.createElement("li");
+    const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = todo.completed;
     checkbox.addEventListener("change", function () {
